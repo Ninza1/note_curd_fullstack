@@ -8,6 +8,7 @@ import auth from "./middlewares/auth.middleware.js";
 
 dotenv.config();
 
+
 const app = express();
 const PORT = process.env.PORT ||8080
 app.use(express.json())
@@ -17,6 +18,14 @@ app.use("/api/notes", auth, noteRouter)
 
 
 
+app.get("/", (req, res) =>{
+    try{
+        res.send("Srever is running fine.")
+
+    }catch(err){
+        res.send("err occured ")
+    }
+})
 
 app.listen(PORT, async() =>{
     try{
